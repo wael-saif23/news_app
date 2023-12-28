@@ -33,16 +33,19 @@ class HomeView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              height: MediaQuery.of(context).size.height * .2,
-              width: MediaQuery.of(context).size.width * .6,
+              alignment: Alignment.center,
+              height: MediaQuery.of(context).size.height * .15,
+              width: MediaQuery.of(context).size.width * .55,
               decoration: const BoxDecoration(
-                
+                borderRadius: BorderRadius.all(Radius.circular(12)),
                 image: DecorationImage(
-                  
-                    image: AssetImage("assets/business.avif"),
+                    image: AssetImage("assets/business.png"),
                     fit: BoxFit.cover),
+                // color: Colors.green
               ),
-              child: const Text("business"),
+              child: Text("business",
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(.5), fontSize: 16)),
             ),
           )
         ],
