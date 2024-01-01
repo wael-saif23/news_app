@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/category_model.dart';
-import 'package:news_app/models/news_model.dart';
 
 import 'package:news_app/widgets/category_list.dart';
 
@@ -20,43 +19,44 @@ class HomeView extends StatelessWidget {
     CategoryModel(
         imageAssetUrl: "assets/technology.png", categoryName: "Technology"),
   ];
-  final List<NewsModel> newsList = const [
-    NewsModel(
-        newsImage: "assets/business.png",
-        newsTitle: "10 steps to start your business",
-        newsSubTitle:
-            "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-    NewsModel(
-        newsImage: "assets/business.png",
-        newsTitle: "10 steps to start your business",
-        newsSubTitle:
-            "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-    NewsModel(
-        newsImage: "assets/business.png",
-        newsTitle: "10 steps to start your business",
-        newsSubTitle:
-            "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-    NewsModel(
-        newsImage: "assets/business.png",
-        newsTitle: "10 steps to start your business",
-        newsSubTitle:
-            "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-    NewsModel(
-        newsImage: "assets/business.png",
-        newsTitle: "10 steps to start your business",
-        newsSubTitle:
-            "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-    NewsModel(
-        newsImage: "assets/business.png",
-        newsTitle: "10 steps to start your business",
-        newsSubTitle:
-            "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-    NewsModel(
-        newsImage: "assets/business.png",
-        newsTitle: "10 steps to start your business",
-        newsSubTitle:
-            "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-  ];
+  // final List<NewsModel> newsList = const [
+  //   NewsModel(
+  //       newsImage: "assets/business.png",
+  //       newsTitle: "10 steps to start your business",
+  //       newsSubTitle:
+  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
+  //   NewsModel(
+  //       newsImage: "assets/business.png",
+  //       newsTitle: "10 steps to start your business",
+  //       newsSubTitle:
+  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
+  //   NewsModel(
+  //       newsImage: "assets/business.png",
+  //       newsTitle: "10 steps to start your business",
+  //       newsSubTitle:
+  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
+  //   NewsModel(
+  //       newsImage: "assets/business.png",
+  //       newsTitle: "10 steps to start your business",
+  //       newsSubTitle:
+  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
+  //   NewsModel(
+  //       newsImage: "assets/business.png",
+  //       newsTitle: "10 steps to start your business",
+  //       newsSubTitle:
+  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
+  //   NewsModel(
+  //       newsImage: "assets/business.png",
+  //       newsTitle: "10 steps to start your business",
+  //       newsSubTitle:
+  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
+  //   NewsModel(
+  //       newsImage: "assets/business.png",
+  //       newsTitle: "10 steps to start your business",
+  //       newsSubTitle:
+  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
+  // ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,15 +82,19 @@ class HomeView extends StatelessWidget {
             ],
           ),
         ),
-        body:
-            CustomScrollView(physics: const BouncingScrollPhysics(), slivers: [
-          SliverToBoxAdapter(child: CategoryList(cateList: cateList)),
-          const SliverToBoxAdapter(
-            child: SizedBox(
-              height: 16,
-            ),
-          ),
-          NewsList(newsList: newsList)
-        ]));
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                SliverToBoxAdapter(child: CategoryList(cateList: cateList)),
+                const SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 16,
+                  ),
+                ),
+                const NewsList()
+              ]),
+        ));
   }
 }

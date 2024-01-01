@@ -21,8 +21,9 @@ class NewsItem extends StatelessWidget {
             borderRadius: const BorderRadius.all(const Radius.circular(12)),
             image: DecorationImage(
                 image: news.newsImage != null
-                    ? AssetImage(news.newsImage!)
-                    : const AssetImage("assets/unseen.png"),
+                    ? NetworkImage(news.newsImage!)
+                    : const NetworkImage(
+                        "https://static.vecteezy.com/system/resources/previews/022/761/801/original/unseen-sign-icon-vector.jpg"),
                 fit: BoxFit.cover),
           ),
           child: Stack(children: [
@@ -33,7 +34,7 @@ class NewsItem extends StatelessWidget {
                 child: Column(
                   children: [
                     Card(
-                      color: Colors.white.withOpacity(.6),
+                      color: Colors.white.withOpacity(.8),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Text(news.newsTitle,
@@ -52,10 +53,17 @@ class NewsItem extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        Text(news.newsSubTitle != null ? news.newsSubTitle! : "...........",
+        Text(news.newsSubTitle != null ? news.newsSubTitle! : "",
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(color: Colors.black54, fontSize: 16)),
+        const Divider(
+          color: Colors.black,
+          thickness: 1,
+          height: 8,
+          endIndent: 30,
+          indent: 30,
+        )
       ],
     );
   }
