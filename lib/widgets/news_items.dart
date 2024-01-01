@@ -18,9 +18,12 @@ class NewsItem extends StatelessWidget {
           height: MediaQuery.of(context).size.height * .25,
           width: double.infinity,
           decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            borderRadius: const BorderRadius.all(const Radius.circular(12)),
             image: DecorationImage(
-                image: AssetImage(news.newsImage), fit: BoxFit.cover),
+                image: news.newsImage != null
+                    ? AssetImage(news.newsImage!)
+                    : const AssetImage("assets/unseen.png"),
+                fit: BoxFit.cover),
           ),
           child: Stack(children: [
             Positioned(
@@ -49,7 +52,7 @@ class NewsItem extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        Text(news.newsSubTitle,
+        Text(news.newsSubTitle != null ? news.newsSubTitle! : "...........",
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(color: Colors.black54, fontSize: 16)),
