@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/models/category_model.dart';
 
 import 'package:news_app/widgets/category_list.dart';
-
-import 'package:news_app/widgets/news_list.dart';
+import 'package:news_app/widgets/news_list-builder.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -93,7 +92,7 @@ class HomeView extends StatelessWidget {
                     height: 16,
                   ),
                 ),
-                const NewsList()
+                const NewsListBuilder()
               ]),
         ));
   }
