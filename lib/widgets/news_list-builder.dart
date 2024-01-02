@@ -43,8 +43,16 @@ class _NewsListBuilderState extends State<NewsListBuilder> {
               ),
             ),
           )
-        : NewsList(
-            theGeneralNewsList: theGeneralNewsList,
-          );
+        : theGeneralNewsList.isNotEmpty
+            ? NewsList(
+                theGeneralNewsList: theGeneralNewsList,
+              )
+            : SliverToBoxAdapter(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * .7,
+                  child: const Center(
+                      child: Text("oops there was an error , try agane later")),
+                ),
+              );
   }
 }
