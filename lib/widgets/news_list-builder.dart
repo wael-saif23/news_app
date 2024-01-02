@@ -15,44 +15,43 @@ class NewsListBuilder extends StatefulWidget {
 }
 
 class _NewsListBuilderState extends State<NewsListBuilder> {
-  List<NewsModel> theGeneralNewsList = [];
-  bool isLoading = true;
+  var future;
 
   @override
   void initState() {
     super.initState();
-    getGeneralNews();
-  }
-
-  Future<void> getGeneralNews() async {
-    theGeneralNewsList = await NewsServices(dio: Dio()).dioGet();
-    isLoading = false;
-    setState(() {});
+    future = NewsServices(dio: Dio()).dioGet();
   }
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? SliverToBoxAdapter(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * .7,
-              child: const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.blue,
+    return FutureBuilder<List<NewsModel>>(
+        future: future,
+        builder: (context, snapShot) {
+          if (snapShot.hasData) {
+            return NewsList(
+              theGeneralNewsList: snapShot.data!,
+            );
+          } else if (snapShot.hasError) {
+            return SliverToBoxAdapter(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * .7,
+                child: const Center(
+                    child: Text("oops there was an error , try agane later")),
+              ),
+            );
+          } else {
+            return SliverToBoxAdapter(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * .7,
+                child: const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.blue,
+                  ),
                 ),
               ),
-            ),
-          )
-        : theGeneralNewsList.isNotEmpty
-            ? NewsList(
-                theGeneralNewsList: theGeneralNewsList,
-              )
-            : SliverToBoxAdapter(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * .7,
-                  child: const Center(
-                      child: Text("oops there was an error , try agane later")),
-                ),
-              );
+            );
+          }
+        });
   }
 }
