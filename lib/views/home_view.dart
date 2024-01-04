@@ -10,51 +10,15 @@ class HomeView extends StatelessWidget {
     CategoryModel(
         imageAssetUrl: "assets/business.png", categoryName: "Business"),
     CategoryModel(
-        imageAssetUrl: "assets/entertaiment.png", categoryName: "Entertaiment"),
-    CategoryModel(imageAssetUrl: "assets/general.png", categoryName: "General"),
+        imageAssetUrl: "assets/entertaiment.png",
+        categoryName: "Entertainment"),
     CategoryModel(imageAssetUrl: "assets/health.png", categoryName: "Health"),
     CategoryModel(imageAssetUrl: "assets/science.png", categoryName: "Science"),
     CategoryModel(imageAssetUrl: "assets/sports_1.png", categoryName: "Sports"),
     CategoryModel(
         imageAssetUrl: "assets/technology.png", categoryName: "Technology"),
+    CategoryModel(imageAssetUrl: "assets/general.png", categoryName: "General"),
   ];
-  // final List<NewsModel> newsList = const [
-  //   NewsModel(
-  //       newsImage: "assets/business.png",
-  //       newsTitle: "10 steps to start your business",
-  //       newsSubTitle:
-  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-  //   NewsModel(
-  //       newsImage: "assets/business.png",
-  //       newsTitle: "10 steps to start your business",
-  //       newsSubTitle:
-  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-  //   NewsModel(
-  //       newsImage: "assets/business.png",
-  //       newsTitle: "10 steps to start your business",
-  //       newsSubTitle:
-  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-  //   NewsModel(
-  //       newsImage: "assets/business.png",
-  //       newsTitle: "10 steps to start your business",
-  //       newsSubTitle:
-  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-  //   NewsModel(
-  //       newsImage: "assets/business.png",
-  //       newsTitle: "10 steps to start your business",
-  //       newsSubTitle:
-  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-  //   NewsModel(
-  //       newsImage: "assets/business.png",
-  //       newsTitle: "10 steps to start your business",
-  //       newsSubTitle:
-  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-  //   NewsModel(
-  //       newsImage: "assets/business.png",
-  //       newsTitle: "10 steps to start your business",
-  //       newsSubTitle:
-  //           "Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Read on to learn about each step."),
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +56,9 @@ class HomeView extends StatelessWidget {
                     height: 16,
                   ),
                 ),
-                const NewsListBuilder()
+                const NewsListBuilder(
+                  category: "general",
+                )
               ]),
         ));
   }
