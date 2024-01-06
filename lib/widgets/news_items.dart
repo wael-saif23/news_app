@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:news_app/models/news_model.dart';
+import 'package:news_app/views/webview-page.dart';
 
 class NewsItem extends StatelessWidget {
   const NewsItem({
@@ -26,29 +27,41 @@ class NewsItem extends StatelessWidget {
                         "https://static.vecteezy.com/system/resources/previews/022/761/801/original/unseen-sign-icon-vector.jpg"),
                 fit: BoxFit.cover),
           ),
-          child: Stack(children: [
-            Positioned(
-                bottom: 10,
-                left: 10,
-                right: 10,
-                child: Column(
-                  children: [
-                    Card(
-                      color: Colors.white.withOpacity(.8),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Text(news.newsTitle,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold)),
+          child: GestureDetector(
+            onDoubleTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WebViewPage(
+                    url: news.url,
+                  ),
+                ),
+              );
+            },
+            child: Stack(children: [
+              Positioned(
+                  bottom: 10,
+                  left: 10,
+                  right: 10,
+                  child: Column(
+                    children: [
+                      Card(
+                        color: Colors.white.withOpacity(.8),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Text(news.newsTitle,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold)),
+                        ),
                       ),
-                    ),
-                  ],
-                ))
-          ]),
+                    ],
+                  ))
+            ]),
+          ),
         ),
         const SizedBox(
           height: 8,
