@@ -27,41 +27,59 @@ class NewsItem extends StatelessWidget {
                         "https://static.vecteezy.com/system/resources/previews/022/761/801/original/unseen-sign-icon-vector.jpg"),
                 fit: BoxFit.cover),
           ),
-          child: GestureDetector(
-            onDoubleTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => WebViewPage(
-                    url: news.url,
+          child: Stack(children: [
+            Positioned(
+                bottom: 10,
+                left: 10,
+                right: 10,
+                child: Card(
+                  color: Colors.white.withOpacity(.8),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(news.newsTitle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold)),
                   ),
+                )),
+            Positioned(
+              top: 2,
+              right: 2,
+              child: TextButton.icon(
+                style: TextButton.styleFrom(
+                  side: const BorderSide(width: 1, color: Colors.blue),
+                  backgroundColor: Colors.white30,
+                  shadowColor: Colors.black,
+                  elevation: 10,
+                  iconColor: Colors.blue,
+                  padding: EdgeInsets.all(2),
                 ),
-              );
-            },
-            child: Stack(children: [
-              Positioned(
-                  bottom: 10,
-                  left: 10,
-                  right: 10,
-                  child: Column(
-                    children: [
-                      Card(
-                        color: Colors.white.withOpacity(.8),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: Text(news.newsTitle,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold)),
-                        ),
+
+                // style:
+                // ButtonStyle(
+                //     shape: MaterialStatePropertyAll(LinearBorder()),
+                //     iconColor: MaterialStateProperty.all(Colors.blue)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WebViewPage(
+                        url: news.url,
                       ),
-                    ],
-                  ))
-            ]),
-          ),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.arrow_forward, size: 16),
+                label: const Text(
+                  "Read More...",
+                  style: TextStyle(color: Colors.blue, fontSize: 12),
+                ),
+              ),
+            )
+          ]),
         ),
         const SizedBox(
           height: 8,
